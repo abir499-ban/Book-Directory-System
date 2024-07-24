@@ -4,7 +4,9 @@ const {User, UservalidateSchema} = require('../models/user')
 async function handleSignUp(req,res){
     const {name, email,password, gender, birthdayDate} = req.body;
     const bd = new Date(birthdayDate);
-    if((!bd instanceof Date)) return res.status(400).json({message:"Invalid date"});
+    if((!bd instanceof Date)) return res.status(401).json({Error:"Invalid date"});
+    const doesUserexist = await User.findOne({email:email});
+    if(doesUserexist) return res.status(401).json({Error:"User already exist"});
     try {
         UservalidateSchema.parse({name, email, password, gender, birthdayDate:bd });
 
@@ -22,7 +24,20 @@ async function handleSignUp(req,res){
     }
 }
 
+async function handleusersignin(req,res){
+    const {email,password} = req.body;
+    try {
+        const user = await User.findOne({email:email});
+        if(!user) return res.status(400).json({Error:"This email does not exist. Sign up first",sucess:false});
+        const sanitized_user = await User.matchPassword(email,password);
+        return res.status(201).json({message:"successfull login",success:true,user:sanitized_user})
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({Error:"Wrong Password", success:false});
+    }
+}
 
 module.exports = {
     handleSignUp,
+    handleusersignin
 }
