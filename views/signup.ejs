@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("./partials/style") %>
+    <style>
+      body {
+        padding: 50px;
+        margin-left: 40px;
+        margin-right: 40px;
+      }
+    </style>
+    <title>Sign Up</title>
+</head>
+
+<body>
+  <h1 style="font-family: 'Courier New', Courier, monospace;">Create your free account today ⭐</h1>
+
+  <form method="post" action="/user/signup">
+    <fieldset>
+      <div>
+        <label for="exampleInputEmail1" class="form-label mt-4">Name</label>
+        <input required name="name" type="text" class="form-control" id="name" aria-describedby="emailHelp"
+          placeholder="Enter your name">
+      </div>
+      <div>
+        <label for="exampleInputEmail1" class="form-label mt-4">Email</label>
+        <input required name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp"
+          placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div>
+        <label for="exampleInputEmail1" class="form-label mt-4">Password</label>
+        <input required name="password" type="password" class="form-control" id="password" aria-describedby="emailHelp"
+          placeholder="Enter password">
+      </div>
+
+      <fieldset>
+        <legend class="mt-4">Gender</legend>
+        <div  class="form-check">
+          <input required class="form-check-input" type="radio" name="gender" id="optionsRadios1" value="Male" checked="">
+          <label class="form-check-label" for="optionsRadios1">
+            Male
+          </label>
+        </div>
+        <div class="form-check">
+          <input required class="form-check-input" type="radio" name="gender" id="optionsRadios2" value="Female">
+          <label class="form-check-label" for="optionsRadios2">
+            Female
+          </label>
+        </div>
+      </fieldset>
+
+      <feildset>
+        <legend class="mt-4">Date of Birth</legend>
+        <div class="form-check">
+          <input required type="date" name="birthdayDate">
+        </div>
+      </feildset>
+
+
+
+
+      <button type="submit" style="margin-top: 10px;" class="btn btn-primary">Sign Up</button>
+    </fieldset>
+  </form>
+  <%- include("./partials/script") %>
+</body>
+
+</html>
