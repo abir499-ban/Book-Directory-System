@@ -7,7 +7,6 @@ require("dotenv").config();
 const UserRouter = require('./routes/user')
 const cookie_parser = require('cookie-parser');
 
-
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('./views'));
 app.use(express.json());
