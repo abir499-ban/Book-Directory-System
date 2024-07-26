@@ -1,14 +1,15 @@
 const { Router } = require('express');
 const router = Router();
 const { handleSignUp, handleusersignin } = require('../controller/user');
+const { restrictAccessto_LogIn_and_SignUp } = require('../middlewares/auth');
 
-router.post('/signup', handleSignUp)
+router.post('/signup',  handleSignUp)
 
-router.get('/signup', (req,res)=>{
+router.get('/signup', restrictAccessto_LogIn_and_SignUp,(req,res)=>{
     return res.render('signup');
 })
 
-router.get('/signin', (req,res)=>{
+router.get('/signin', restrictAccessto_LogIn_and_SignUp , (req,res)=>{
     return res.render('signin');
 })
 

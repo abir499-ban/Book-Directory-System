@@ -25,7 +25,7 @@ app.use(cookie_parser());
 
 
 app.get('/', (req,res) =>{
-    return res.send("HOME");
+    return res.render("home");
 })
 
 
