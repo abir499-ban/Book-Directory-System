@@ -14,7 +14,12 @@
 </head>
 
 <body>
-
+  <% if (!locals.success && locals.Error) { %>
+    <div class="alert alert-dismissible alert-danger">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      <strong><%= locals.Error %></strong>
+    </div>
+  <% } %>
   <h1 style="font-family: 'Courier New', Courier, monospace;">Log in to get started 🚀</h1>
   <form method="post" action="/user/signin">
     <fieldset>

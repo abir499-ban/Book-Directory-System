@@ -9,10 +9,8 @@ async function restrictAccessto_LogIn_and_SignUp(req,res,next){
         //console.log('token found ',token);
         const payload = await validateTOKEN(token);
         if(!payload) return next();
-        const user = await User.findById(payload._id);
-        console.log("user found!! ");
         return res.render("home",{
-            user:user
+            user:payload
         });
     } catch (error) {
         console.log(error);
@@ -20,6 +18,21 @@ async function restrictAccessto_LogIn_and_SignUp(req,res,next){
     }
 }
 
+
+async function restrictuser(req,res,next){
+    const token = req.cookies.token;
+    if(!token) return next();
+    try {
+        const payload = await validateTOKEN(token);
+        if(!payload) return next();
+        req.user = payload;
+        return next();
+    } catch (error) {
+        console.log("Error in authenticating")
+    }
+}
+
 module.exports = {
-    restrictAccessto_LogIn_and_SignUp
+    restrictAccessto_LogIn_and_SignUp,
+    restrictuser
 }

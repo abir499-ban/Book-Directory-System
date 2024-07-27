@@ -6,6 +6,7 @@ const {connectTOmongoDB} = require('./utils/connection');
 require("dotenv").config();
 const UserRouter = require('./routes/user')
 const cookie_parser = require('cookie-parser');
+const { restrictuser } = require('./middlewares/auth');
 
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('./views'));
@@ -23,8 +24,10 @@ app.use(cookie_parser());
 
 
 
-app.get('/', (req,res) =>{
-    return res.render("home");
+app.get('/', restrictuser, (req,res) =>{
+    return res.render("home",{
+        user:req.user
+    });
 })
 
 

@@ -14,9 +14,19 @@
 </head>
 
 <body>
+    <% if (locals.success && locals.message) { %>
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong><%= locals.message %></strong>
+        </div>
+     
+    <% } %>
     <%- include("./partials/navbar") %>
         <div class="maqsad">
             <h1>Home</h1>
+            <% if (locals.user) { %>
+             <h2><%= locals.user.name %></h2>
+            <% } %>
         </div>
         <%- include("./partials/script") %>
 </body>
