@@ -5,6 +5,7 @@ const path = require('path');
 const {connectTOmongoDB} = require('./utils/connection');
 require("dotenv").config();
 const UserRouter = require('./routes/user')
+const BookRouter = require('./routes/book')
 const cookie_parser = require('cookie-parser');
 const { restrictuser } = require('./middlewares/auth');
 
@@ -32,6 +33,9 @@ app.get('/', restrictuser, (req,res) =>{
 
 
 app.use('/user', UserRouter);
+app.use('/book', BookRouter);
+
+
 
 try{
     connectTOmongoDB();

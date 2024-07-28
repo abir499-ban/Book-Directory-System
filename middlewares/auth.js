@@ -32,7 +32,31 @@ async function restrictuser(req,res,next){
     }
 }
 
+
+async function restrictAccesstoAddBook(req,res,next){
+    const token = req.cookies.token;
+    if(!token) return res.status(400).render("home",{
+        success:false,
+        Error:"Sign in first to add a book"
+    })
+    try {
+        const payload = await validateTOKEN(token);
+        if(!payload) return res.status(400).render("home",{
+            success:false,
+            Error:"error in accessing the route"
+        })
+        req.user = payload;
+        return next();
+    } catch (error) {
+        console.log(error);
+        return res.status(500).render("home",{
+            success:false,
+            Error:"server Error"
+        })
+    }
+}
 module.exports = {
     restrictAccessto_LogIn_and_SignUp,
-    restrictuser
+    restrictuser,
+    restrictAccesstoAddBook
 }
