@@ -2,42 +2,58 @@
 <html lang="en">
 
 <head>
-    <%- include("./partials/style") %>
+  <%- include("./partials/style") %>
     <style>
-        body {
-          padding: 50px;
-          margin-left: 40px;
-          margin-right: 40px;
-        }
-      </style>
-        <title>Add Book</title>
+      body {
+        padding: 50px;
+        margin-left: 40px;
+        margin-right: 40px;
+      }
+    </style>
+    <title>Add Book</title>
 </head>
 
 <body>
-    <h2><%= locals.user._id %></h2>
-    <h1 style="font-family: 'Courier New', Courier, monospace;">Add a book 📔</h1>
+  <% if (locals.success==false && locals.Error) { %>
+    <div class="alert alert-dismissible alert-danger">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      <strong>
+        <%= locals.Error %>
+      </strong>
+    </div>
+    <% } %>
 
-    <form class="mt-4" action="/book/addbook" method="post">
-        <fieldset>
-            <input type="hidden" name="userId" value="<%= locals.user._id %>">
-            <div>
-                <legend>Book Title</legend>
-                <input required name="bookTitle" type="text" class="form-control" id="bookTitle" aria-describedby="emailHelp"
-                    placeholder="Enter Book Title">
-            </div>
-           
+      <% if (locals.user) { %>
+        <h2>
+          <%= locals.user._id %>
+        </h2>
+
+        <% } %>
+          <h1 style="font-family: 'Courier New', Courier, monospace;">Add a book 📔</h1>
+
+          <form class="mt-4" action="/book/addbook" method="post">
             <fieldset>
+              <input type="hidden" name="userId" value="<%= locals.user._id %>">
+              <div>
+                <legend>Book Title</legend>
+                <input required name="bookTitle" type="text" class="form-control" id="bookTitle"
+                  aria-describedby="emailHelp" placeholder="Enter Book Title">
+              </div>
+
+              <fieldset>
                 <legend class="mt-4">Genre</legend>
                 <div class="form-check">
-                  <input required class="form-check-input" type="radio" name="genre" id="Literature" value="Literature" checked="">
+                  <input required class="form-check-input" type="radio" name="genre" id="Literature" value="Literature"
+                    checked="">
                   <label class="form-check-label" for="Literature">
                     Literature
                   </label>
                 </div>
                 <div class="form-check">
-                  <input required class="form-check-input" type="radio" name="genre" id="Self-Motivation" value="Self-Motivation" checked="">
+                  <input required class="form-check-input" type="radio" name="genre" id="Self-Motivation"
+                    value="Self-Motivation" checked="">
                   <label class="form-check-label" for="Self-Motivation">
-                   Self-Motivation
+                    Self-Motivation
                   </label>
                 </div>
                 <div class="form-check disabled">
@@ -50,58 +66,59 @@
 
               <div class="mt-4">
                 <legend>Category</legend>
-                <input required name="category" type="text" class="form-control" id="Category" aria-describedby="emailHelp"
-                    placeholder="Enter Book Category">
-            </div>
-            <div class="mt-4">
+                <input required name="category" type="text" class="form-control" id="Category"
+                  aria-describedby="emailHelp" placeholder="Enter Book Category">
+              </div>
+              <div class="mt-4">
                 <legend>Author</legend>
                 <input required name="author" type="text" class="form-control" id="auhtor" aria-describedby="emailHelp"
-                    placeholder="Enter Book Author">
-            </div>
-            <div class="mt-4">
+                  placeholder="Enter Book Author">
+              </div>
+              <div class="mt-4">
                 <legend>Publisher</legend>
-                <input  name="publisher" type="text" class="form-control" id="publisher" aria-describedby="emailHelp"
-                    placeholder="Enter Book Publisher( if known)">
-            </div>
-            <div class="mt-4">
+                <input name="publisher" type="text" class="form-control" id="publisher" aria-describedby="emailHelp"
+                  placeholder="Enter Book Publisher( if known)">
+              </div>
+              <div class="mt-4">
                 <legend>No.of Pages</legend>
-                <input  required name="no_of_pages" type="number" class="form-control" id="no_of_pages" aria-describedby="emailHelp"
-                    placeholder="Enter no of pages of book">
-            </div>
+                <input required name="no_of_pages" type="number" class="form-control" id="no_of_pages"
+                  aria-describedby="emailHelp" placeholder="Enter no of pages of book">
+              </div>
 
-            <div class="mt-4">
+              <div class="mt-4">
                 <legend>ISBN/AISN code</legend>
-                <input  name="isbn" type="text" class="form-control" id="aisn" aria-describedby="emailHelp"
-                    placeholder="Enter AISN/ISBN code of the book(if known)">
-            </div>
+                <input name="isbn" type="text" class="form-control" id="aisn" aria-describedby="emailHelp"
+                  placeholder="Enter AISN/ISBN code of the book(if known)">
+              </div>
 
-            <div class="mt-4">
+              <div class="mt-4">
                 <legend>Description</legend>
-                <input  required name="description" type="text" class="form-control" id="description" aria-describedby="emailHelp"
-                    placeholder="Enter description of the book">
-            </div>
+                <input required name="description" type="text" class="form-control" id="description"
+                  aria-describedby="emailHelp" placeholder="Enter description of the book">
+              </div>
 
-            <div class="mt-4">
+              <div class="mt-4">
                 <legend>Cover Image URL</legend>
-                <input  name="coverImageURL" type="text" class="form-control" id="coverImageURL" aria-describedby="emailHelp">
-            </div>
-            
-            <div class="mt-4">
+                <input name="coverImageURL" type="text" class="form-control" id="coverImageURL"
+                  aria-describedby="emailHelp">
+              </div>
+
+              <div class="mt-4">
                 <legend>Enter Link to buy this book</legend>
                 <input name="readLink" type="text" class="form-control" id="readLink" aria-describedby="emailHelp">
-            </div>
-            
-
-            <button id="submit" type="submit" style="margin-top: 10px;" class="btn btn-primary">Add Book</button>
-        </fieldset>
-        <script>
-           
-        </script>
-
-    </form>
+              </div>
 
 
-    <%- include("./partials/script") %>
+              <button id="submit" type="submit" style="margin-top: 10px;" class="btn btn-primary">Add Book</button>
+            </fieldset>
+            <script>
+
+            </script>
+
+          </form>
+
+
+          <%- include("./partials/script") %>
 </body>
 
 </html>

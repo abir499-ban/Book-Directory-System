@@ -17,7 +17,7 @@ const BookSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    auhtor:{
+    author:{
         type:String,
         required:true,
     },
@@ -37,8 +37,9 @@ const BookSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    coverImageURl:{
+    coverImageURL:{
         type:String,
+        default:'/asset/default/book_cover.png'
     },
     readURl:{
         type:String,
@@ -47,7 +48,7 @@ const BookSchema = new mongoose.Schema({
     postedby:{
         type : mongoose.Schema.Types.ObjectId,
         ref:"user",
-    }
+    },
 
 },{
     timestamps: true
@@ -55,13 +56,12 @@ const BookSchema = new mongoose.Schema({
 
 
 const validateBookSchema = z.object({
-    id: z.number(),
     bookTitle : z.string().min(4,"Book Title must be of atleast 4 characters"),
     author : z.string().min(4,"author name must be of atleast 4 characters"),
 
 })
 
-const Book = model("book", BookSchema);
+const Book = mongoose.model("book", BookSchema);
 
 
 module.exports  ={
