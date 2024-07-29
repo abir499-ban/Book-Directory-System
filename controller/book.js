@@ -1,4 +1,4 @@
-const { updategenre } = require("../constants/get_genre");
+const { updategenre, get_genre } = require("../constants/get_genre");
 const { validateBookSchema, Book } = require("../models/book");
 const Genre = require("../models/genre");
 const { User } = require("../models/user");
@@ -25,12 +25,13 @@ async function createBook(req, res, next) {
             readLink: readLink ? readLink : 'null',
             postedby: userId
         })
-
+        const allGenres = await get_genre();
         await updategenre(genre);
         return res.status(201).render("home",{
             user: user,
             success:true,
-            message: "Book Added Succesfully!"
+            message: "Book Added Succesfully!",
+            allGenres: allGenres,
         })
 
     } catch (error) {

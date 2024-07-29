@@ -4,7 +4,7 @@ const {Schema, model} = require('mongoose');
 const GenreSchema = new Schema({
     genres:{
         type:[String],
-        default:["Literarture", "Science", "Self-Motivation"]
+        default:["Literature","Science", "Self-Motivation"]
     }
 },{
     timestamps:true

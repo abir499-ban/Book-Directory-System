@@ -6,8 +6,8 @@
     <style>
       body {
         padding: 50px;
-        margin-left: 40px;
-        margin-right: 40px;
+        margin-left: 150px;
+        margin-right: 150px;
       }
     </style>
     <title>Sign Up</title>
@@ -38,8 +38,9 @@
 
       <fieldset>
         <legend class="mt-4">Gender</legend>
-        <div  class="form-check">
-          <input required class="form-check-input" type="radio" name="gender" id="optionsRadios1" value="Male" checked="">
+        <div class="form-check">
+          <input required class="form-check-input" type="radio" name="gender" id="optionsRadios1" value="Male"
+            checked="">
           <label class="form-check-label" for="optionsRadios1">
             Male
           </label>
@@ -52,6 +53,10 @@
         </div>
       </fieldset>
 
+      <div>
+        <label for="formFile" class="form-label mt-4">Default file input example</label>
+        <input class="form-control" type="file" id="formFile">
+      </div>
       <feildset>
         <legend class="mt-4">Date of Birth</legend>
         <div class="form-check">

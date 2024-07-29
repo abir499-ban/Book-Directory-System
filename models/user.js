@@ -1,4 +1,4 @@
-const {Schema,model} = require('mongoose');
+const {Schema,model, default: mongoose} = require('mongoose');
 const {randomBytes, createHmac} = require('crypto');
 const {z} = require('zod');
 
@@ -36,6 +36,14 @@ const UserSchema = new Schema({
         type:String,
         default:"USER"
     },
+    profilePic:{
+        type:String,
+        default: '/asset/default/user_avatar.png'
+    },
+    blogs:{
+        type:[mongoose.Schema.ObjectId.Types],
+        ref:"blogs"
+    }
     
 },{
     timestamps:true

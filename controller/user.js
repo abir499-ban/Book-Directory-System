@@ -1,6 +1,6 @@
 const {User, UservalidateSchema} = require('../models/user');
 const { createToken } = require('../utils/service/auth');
-
+const {get_genre} = require('../constants/get_genre')
 
 async function handleSignUp(req,res){
     const {name, email,password, gender, birthdayDate} = req.body;
@@ -18,10 +18,19 @@ async function handleSignUp(req,res){
             gender:gender,
             birthdayDate: bd,
         })
-        return res.status(201).json({ message: "User created" });
+        const allGenres = await get_genre();
+        return res.status(201).render("home",{
+            success:true,
+            message:"User created",
+            user : user,
+            allGenres : allGenres,
+        });
     } catch (error) {
         console.log(error);
-        return res.status(400).json({ Error: error.issues[0].message });
+        return res.status(400).render('signup',{
+            success:false,
+            Error : error.issues[0].message
+        });
     }
 }
 
@@ -36,7 +45,7 @@ async function handleusersignin(req,res){
         const token = await createToken(sanitized_user);
         res.cookie("token",token);
         return res.status(201).render("home",
-            {message:"successfull login",success:true,user:sanitized_user})
+            {message:"successfull login",success:true,user:sanitized_user, allGenres : await get_genre()})
     } catch (error) {
         console.log(error);
         return res.status(500).render("signin",{Error:"Wrong Password", success:false});
