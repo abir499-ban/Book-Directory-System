@@ -9,6 +9,9 @@
                 margin-left: 40px;
                 margin-right: 40px;
             }
+            div#display:hover{
+                cursor: pointer;
+            }
         </style>
         <title>HOME</title>
 </head>
@@ -44,7 +47,7 @@
                                     <div style="display: flex; flex-wrap: wrap; flex-direction: row; gap:10px">
                                         <% if (locals.allGenres) { %>
                                             <% (locals.allGenres).forEach(genre=> { %>
-                                                <div  onclick="gettBooks('<%= genre %>')" class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+                                                <div id="display" onclick="gettBooks('<%= genre %>')" class="card text-white bg-primary mb-3" style="max-width: 20rem;">
                                                     <div class="card-body">
                                                         <h4 class="card-title"><%= genre %></h4>
                                                         <p class="card-text">Some quick example text to build on the

@@ -1,7 +1,8 @@
 const {Router} = require('express');
-const { restrictAccesstoAddBook } = require('../middlewares/auth');
+const { restrictAccesstoAddBook, restrictuser } = require('../middlewares/auth');
 const { createBook } = require('../controller/book');
 const { get_genre } = require('../constants/get_genre');
+const { Book } = require('../models/book');
 const router = Router();
 
 router.get('/addbook', restrictAccesstoAddBook,async(req,res)=>{
@@ -15,11 +16,14 @@ router.get('/addbook', restrictAccesstoAddBook,async(req,res)=>{
 
 router.post('/addbook', createBook);
 
-router.get('/getbooks/:genre', (req,res)=>{
+router.get('/getbooks/:genre',restrictuser ,async(req,res)=>{
     const genre = req.params.genre;
-    console.log(genre);
+    const allBooks = await Book.find({genre:genre}).populate('postedby');
+    console.log(allBooks);
     return res.render("getBooks",{
         genre:genre,
+        allBooks:allBooks,
+        user:req.user,
     });
 })
 

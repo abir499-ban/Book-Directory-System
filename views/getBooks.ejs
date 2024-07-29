@@ -15,19 +15,34 @@
 
 <body>
     <%- include("./partials/navbar") %>
-    <div class="maqsad">
-        <h1>welcome</h1>
-        <h2>
-            <%= locals.genre %>
-        </h2>
-    </div>
+        <div class="maqsad">
+            <h2 style="display:inline;">
+                <%= locals.genre %> <h3>(<%= locals.allBooks.length %>)</h3>
+            </h2>
+            
+
+
+            <div class="wrap"
+                style="display: flex; flex-wrap: wrap; flex-direction: row; gap:10px;">
+                <% (locals.allBooks).forEach(book=> { %>
+                    <div class="card" style="width: 18rem; border-radius: 10px;">
+                        <img src="<%= book.coverImageURL %>" style="border-radius: 10px;" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title"><%= book.bookTitle %></h5>
+                          <a href="#" class="btn btn-primary">Click here for more details</a>
+                        </div>
+                      </div>
+                    <% }) %>
+
+            </div>
+        </div>
 
 
 
 
 
 
-    <%- include("./partials/script") %>
+        <%- include("./partials/script") %>
 </body>
 
 </html>
