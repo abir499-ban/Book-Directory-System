@@ -13,7 +13,15 @@ router.get('/addbook', restrictAccesstoAddBook,async(req,res)=>{
     })
 })
 
-router.post('/addbook', createBook)
+router.post('/addbook', createBook);
+
+router.get('/getbooks/:genre', (req,res)=>{
+    const genre = req.params.genre;
+    console.log(genre);
+    return res.render("getBooks",{
+        genre:genre,
+    });
+})
 
 
 

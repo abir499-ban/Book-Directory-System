@@ -14,27 +14,55 @@
 </head>
 
 <body>
-    <% if (locals.success == false && locals.Error) { %>
+    <% if (locals.success==false && locals.Error) { %>
         <div class="alert alert-dismissible alert-secondary">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong><%= locals.Error %></strong>
-          </div>
-    <% } %>
-    <% if (locals.success && locals.message) { %>
-        <div class="alert alert-dismissible alert-success">
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong><%= locals.message %></strong>
+            <strong>
+                <%= locals.Error %>
+            </strong>
         </div>
-     
-    <% } %>
-    <%- include("./partials/navbar") %>
-        <div class="maqsad">
-            <h1>Home</h1>
-            <% if (locals.user) { %>
-             <h2><%= locals.user.name %></h2>
-            <% } %>
-        </div>
-        <%- include("./partials/script") %>
+        <% } %>
+            <% if (locals.success && locals.message) { %>
+                <div class="alert alert-dismissible alert-success">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>
+                        <%= locals.message %>
+                    </strong>
+                </div>
+
+                <% } %>
+                    <%- include("./partials/navbar") %>
+                        <div class="maqsad">
+                            <h1>Home</h1>
+                            <% if (locals.user) { %>
+                                <h2>
+                                    <%= locals.user.name %>
+                                </h2>
+                                <% } %>
+
+
+                                    <div style="display: flex; flex-wrap: wrap; flex-direction: row; gap:10px">
+                                        <% if (locals.allGenres) { %>
+                                            <% (locals.allGenres).forEach(genre=> { %>
+                                                <div  onclick="gettBooks('<%= genre %>')" class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title"><%= genre %></h4>
+                                                        <p class="card-text">Some quick example text to build on the
+                                                            card title and
+                                                            make up the bulk of the card's content.</p>
+                                                    </div>
+                                                </div>
+                                                <% }) %>
+
+                                                    <% } %>
+                                    </div>
+                        </div>
+                        <%- include("./partials/script") %>
+                        <script>
+                            function gettBooks(genre){
+                                window.location.href = `http://localhost:8000/book/getbooks/${genre}`     
+                            }
+                        </script>
 </body>
 
 </html>

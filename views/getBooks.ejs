@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./partials/style") %>
+        <style>
+            div.maqsad {
+                padding: 50px;
+                margin-left: 40px;
+                margin-right: 40px;
+            }
+        </style>
+        <title>See the books of this Genre</title>
+</head>
+
+<body>
+    <%- include("./partials/navbar") %>
+    <div class="maqsad">
+        <h1>welcome</h1>
+        <h2>
+            <%= locals.genre %>
+        </h2>
+    </div>
+
+
+
+
+
+
+    <%- include("./partials/script") %>
+</body>
+
+</html>
