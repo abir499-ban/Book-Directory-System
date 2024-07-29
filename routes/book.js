@@ -28,5 +28,16 @@ router.get('/getbooks/:genre',restrictuser ,async(req,res)=>{
 })
 
 
+router.get('/getbooks/:genre/:id', restrictuser,async(req,res)=>{
+    const bookid = req.params.id;
+    const genre = req.params.genre;
+    const book = await Book.findOne({id:bookid}).populate('postedby');
+    return res.render("book",{
+        book:book,
+        genre:genre,
+        user:req.user,
+    })
+})
+
 
 module.exports = router

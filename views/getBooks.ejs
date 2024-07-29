@@ -29,7 +29,7 @@
                         <img src="<%= book.coverImageURL %>" style="border-radius: 10px;" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title"><%= book.bookTitle %></h5>
-                          <a href="#" class="btn btn-primary">Click here for more details</a>
+                          <a onclick="getBook('<%= book.id %>','<%=book.genre %>')" class="btn btn-primary">Click here for more details</a>
                         </div>
                       </div>
                     <% }) %>
@@ -43,6 +43,12 @@
 
 
         <%- include("./partials/script") %>
+
+        <script>
+            function getBook(id,genre){
+                window.location.href = `http://localhost:8000/book/getbooks/${genre}/${id}`;
+            }
+        </script>
 </body>
 
 </html>
