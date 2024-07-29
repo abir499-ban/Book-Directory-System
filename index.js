@@ -8,6 +8,7 @@ const UserRouter = require('./routes/user')
 const BookRouter = require('./routes/book')
 const cookie_parser = require('cookie-parser');
 const { restrictuser } = require('./middlewares/auth');
+const Genre = require('./models/genre');
 
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('./views'));
@@ -35,6 +36,8 @@ app.get('/', restrictuser, (req,res) =>{
 
 app.use('/user', UserRouter);
 app.use('/book', BookRouter);
+
+
 
 
 

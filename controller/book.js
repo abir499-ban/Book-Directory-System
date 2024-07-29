@@ -1,4 +1,6 @@
+const { get_genre } = require("../constants/get_genre");
 const { validateBookSchema, Book } = require("../models/book");
+const Genre = require("../models/genre");
 const { User } = require("../models/user");
 
 
@@ -8,7 +10,9 @@ async function createBook(req, res, next) {
     const user = await User.findById(userId);
     try {
         validateBookSchema.parse({ bookTitle, author });
+        const last_book_id = (await Book.find({})).length
         const book = await Book.create({
+            id:last_book_id + 1,
             bookTitle: bookTitle,
             genre: genre,
             category: category,
@@ -21,6 +25,7 @@ async function createBook(req, res, next) {
             readLink: readLink ? readLink : 'null',
             postedby: userId
         })
+
         return res.status(201).render("home",{
             user: user,
             success:true,
