@@ -71,7 +71,9 @@
                                     <p style="color: grey;">Created on <%= book.createdAt.toDateString() %>
                                     </p>
                                 </div>
-                                <button type="button" class="btn btn-outline-danger">Delete</button>
+                                <form action="/book/<%=book._id%>" method="post">
+                                    <button class="btn btn-outline-danger" id="delete-btn" type="submit">Delete</button>
+                                </form>
                                 <hr>
                                 <% }) %>
                         </div>

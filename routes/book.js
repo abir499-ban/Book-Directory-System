@@ -39,6 +39,31 @@ router.get('/getbooks/:genre/:id', restrictuser, async (req, res) => {
 })
 
 
+
+router.post('/:id', restrictuser,async(req,res)=>{
+    const bookid = req.params.id;
+    try {
+        await Book.findByIdAndDelete(bookid);
+        return res.render('home', {
+            user:req.user,
+            allGenres: await get_genre(),
+            success:true,
+            message: "Book deleted successfully"
+        })
+    } catch (error) {
+        console.log(error);
+        return res.render("home",{
+            user:req.user,
+            allGenres: await get_genre(),
+            success:false,
+            Error:"Error in Deleting book"
+        })
+    }
+})
+
+
+
+
 router.post('/create_genre', async (req, res) => {
     try {
         const { genre } = req.body;
