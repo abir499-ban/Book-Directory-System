@@ -55,8 +55,24 @@ async function restrictAccesstoAddBook(req,res,next){
         })
     }
 }
+
+async function accesstoProfile(req,res,next){
+    const token = req.cookies.token;
+    if(!token){
+        return res.json({message:"Cant access profile page without user login"});
+    }
+    try{
+        const payload = await validateTOKEN(token);
+        req.user = payload;
+        return next();
+    }catch(error){
+        console.log(error);
+        return res.json({Error:"Server error"});
+    }
+}
 module.exports = {
     restrictAccessto_LogIn_and_SignUp,
     restrictuser,
-    restrictAccesstoAddBook
+    restrictAccesstoAddBook,
+    accesstoProfile,
 }

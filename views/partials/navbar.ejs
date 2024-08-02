@@ -20,13 +20,7 @@
                     <% } %>
                         <% if (locals.user) { %>
                             <li class="nav-item">
-                                <a class="nav-link" href="/book/addbook" style=" font-weight: bold;
-                        font-weight: bold;
-                        background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;
-                        background-clip: text;
-                        text-fill-color: transparent;"><b>Add a Book</b></a>
+                                <a class="nav-link" href="/book/addbook" style=" font-weight: bold; color: navy;"><b>Add a Book</b></a>
                             </li>
 
                             <% } %>
@@ -48,9 +42,7 @@
                 <input class="form-control me-sm-2" type="search" placeholder="Search">
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                 <% if (locals.user) { %>
-                    <a class="nav-link" href="#">Profile
-                        <span class="visually-hidden">(current)</span>
-                    </a>
+                    <a class="nav-link" href="/user/<%= locals.user._id %>">Profile</a>
 
                     <% } %>
             </form>

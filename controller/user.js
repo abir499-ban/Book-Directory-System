@@ -17,6 +17,7 @@ async function handleSignUp(req,res){
             password: password,
             gender:gender,
             birthdayDate: bd,
+            profilePic: req.file ? `/uploads/${req.file.filename}` : '/asset/default/user_avatar.png'
         })
         const allGenres = await get_genre();
         return res.status(201).render("home",{
