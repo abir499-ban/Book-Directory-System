@@ -26,10 +26,14 @@
                 <p style="word-spacing: 10px; font-size: 20px;"><span><b>No.of Pages : </b><%= book.no_of_pages %></span></p>
                 <p style="word-spacing: 10px; font-size: 20px;"><span><b>ISBN code : </b><%= book.isbn %></span></p>
                 <p style="word-spacing: 10px; font-size: 20px;"><b>Description : </b><p><%= book.description %></p></p>
+                <p style="word-spacing: 10px; font-size: 20px;"><b>Buy here : </b><p><%= book.readURl %></p></p>
             </div>
         </div>
 
-        <h5 class="mt-4"><%= book.postedby.name %></h5>
+        <hr>
+        <a  href="/user/<%= book.postedby._id %>"><img src="<%= book.postedby.profilePic %>" style="height: 35px; width: 35px; border-radius: 20px;"><p><%= book.postedby.name %></p></a>
+        <hr>
+
 
 
         

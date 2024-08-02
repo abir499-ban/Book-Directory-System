@@ -43,6 +43,10 @@ const UserSchema = new Schema({
     blogs:{
         type:[mongoose.Schema.ObjectId.Types],
         ref:"blogs"
+    },
+    books:{
+        type:[mongoose.Schema.ObjectId.Types],
+        ref:"book"
     }
     
 },{

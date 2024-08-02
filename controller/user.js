@@ -56,7 +56,7 @@ async function handleusersignin(req, res) {
 async function getUserProfile(req, res) {
     const id = req.params.id;
     if(req.user._id !== id) return res.render("home",{
-        usError:"Cannot view other users's profile",
+        Error:"Cannot view other users's profile",
         success:false,
         allGenres: await get_genre(),
         user : req.user,
