@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/style') %>
+        <style>
+            .maqsad {
+                padding: 50px;
+                margin-left: 40px;
+                margin-right: 40px;
+            }
+        </style>
+        <title>Add Book</title>
+</head>
+
+<body>
+    <% if (locals.success==false && locals.Error) { %>
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>
+                <%= locals.Error %>
+            </strong>
+        </div>
+        <% } %>
+            <%- include("./partials/navbar") %>
+                <div class="maqsad">
+                    <h1 style="font-family: 'Courier New', Courier, monospace;">Add a blog 📝</h1>
+                    <form class="mt-4" action="/blog/addblog" method="post">
+                        <feildset>
+                            <div>
+                                <legend>Blog Title</legend>
+                                <input required name="blogTitle" type="text" class="form-control" id="blogTitle"
+                                    aria-describedby="emailHelp" placeholder="Enter Blog Title">
+                                <small>Readers will know your blog by your blog title</small>
+                            </div>
+                            <div class="mt-4">
+                                <legend>Body</legend>
+                                <input required name="blogBody" type="text" class="form-control" id="blogBody"
+                                    aria-describedby="emailHelp" placeholder="Enter Blog Body">
+                            </div>
+                            <div class="mt-4">
+                                <legend>Cover Image for Blog</legend>
+                                <input name="coverPic" type="text" class="form-control" id="coverPic"
+                                    aria-describedby="emailHelp">
+                                    <small>Adding a cover pic for your blog increases interactivity</small>
+                            </div>
+                            <button id="submit" type="submit" style="margin-top: 10px;" class="btn btn-primary">Add
+                                Blog</button>
+                        </feildset>
+                    </form>
+                </div>
+</body>
+
+</html>

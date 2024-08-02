@@ -6,6 +6,7 @@ const {connectTOmongoDB} = require('./utils/connection');
 require("dotenv").config();
 const UserRouter = require('./routes/user')
 const BookRouter = require('./routes/book')
+const BlogRouter = require('./routes/blog');
 const cookie_parser = require('cookie-parser');
 const { restrictuser } = require('./middlewares/auth');
 const { get_genre, updategenre } = require('./constants/get_genre');
@@ -38,7 +39,7 @@ app.get('/', restrictuser, async(req,res) =>{
 
 app.use('/user', UserRouter);
 app.use('/book', BookRouter);
-
+app.use('/blog', BlogRouter);
 
 app.post('/create_genre', async(req,res)=>{
     const {title,info,coverPic} = req.body;
