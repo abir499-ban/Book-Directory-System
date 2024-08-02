@@ -62,7 +62,7 @@ async function getUserProfile(req, res) {
         user : req.user,
     })
     try {
-        const user = await User.findById(id);
+        const user = await User.findById(id).populate("books");
         return res.render("profile", {
             user: user,
             alreadyOnprofile : true,
