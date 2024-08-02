@@ -29,11 +29,11 @@
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active" data-bs-toggle="tab" href="#blogs" aria-selected="true"
-                                role="tab">Blogs</a>
+                                role="tab">Blogs (<%= user.blogs.length %>)</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" data-bs-toggle="tab" href="#books" aria-selected="false" role="tab"
-                                tabindex="-1">Books</a>
+                                tabindex="-1">Books(<%= user.books.length %>)</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab"
@@ -56,9 +56,7 @@
                         <div class="tab-pane fade active show" id="blogs" role="tabpanel">
                             <% if (locals.user.blogs) { %>
                                 <% (locals.user.blogs).forEach(blog=> { %>
-                                    <h1>
-                                        <%= blog.BlogTitle %>
-                                    </h1>
+                                    <p><%= blog.BlogTitle %></p>
                                     <% }) %>
                                         <% } %>
                         </div>

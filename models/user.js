@@ -43,7 +43,7 @@ const UserSchema = new Schema({
     blogs: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "blogs"
+            ref: "blog"
         },
     ],
     books: [
