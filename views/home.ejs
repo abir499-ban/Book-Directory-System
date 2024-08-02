@@ -47,12 +47,10 @@
                                     <div style="display: flex; flex-wrap: wrap; flex-direction: row; gap:10px">
                                         <% if (locals.allGenres) { %>
                                             <% (locals.allGenres).forEach(genre=> { %>
-                                                <div id="display" onclick="gettBooks('<%= genre %>')" class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title"><%= genre %></h4>
-                                                        <p class="card-text">Some quick example text to build on the
-                                                            card title and
-                                                            make up the bulk of the card's content.</p>
+                                                <div id="display" onclick="gettBooks('<%= genre.title %>')" class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+                                                    <div class="card-body" style="background-image: url('<%= genre.coverPic %>'); background-size: cover; background-position: center; background-repeat: no-repeat;" >
+                                                        <h4 class="card-title"><%= genre.title %></h4>
+                                                        <p class="card-text"><%= genre.info %></p>
                                                     </div>
                                                 </div>
                                                 <% }) %>

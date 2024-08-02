@@ -2,9 +2,16 @@ const {Schema, model} = require('mongoose');
 
 
 const GenreSchema = new Schema({
-    genres:{
-        type:[String],
-        default:["Literature","Science", "Self-Motivation"]
+    title:{
+        type:String,
+        required: true,
+    },
+    info:{
+        type:String,
+        required:true,
+    },
+    coverPic:{
+        type:String,
     }
 },{
     timestamps:true

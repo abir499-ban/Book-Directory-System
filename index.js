@@ -8,7 +8,7 @@ const UserRouter = require('./routes/user')
 const BookRouter = require('./routes/book')
 const cookie_parser = require('cookie-parser');
 const { restrictuser } = require('./middlewares/auth');
-const { get_genre } = require('./constants/get_genre');
+const { get_genre, updategenre } = require('./constants/get_genre');
 
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('./views'));
@@ -39,6 +39,16 @@ app.get('/', restrictuser, async(req,res) =>{
 app.use('/user', UserRouter);
 app.use('/book', BookRouter);
 
+
+app.post('/create_genre', async(req,res)=>{
+    const {title,info,coverPic} = req.body;
+    try {
+        await updategenre(title,info,coverPic);
+        return res.send("Done! no error");
+    } catch (error) {
+        return res.send('Error!');
+    }
+})
 
 
 
