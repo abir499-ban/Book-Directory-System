@@ -2,12 +2,12 @@ const { updategenre, get_genre } = require("../constants/get_genre");
 const { validateBookSchema, Book } = require("../models/book");
 const Genre = require("../models/genre");
 const { User } = require("../models/user");
+const { updateBook } = require("../utils/helper/updatebookinUserSchema");
 
 
 
 async function createBook(req, res, next) {
-    const { userId, bookTitle, genre, category, author, publisher, no_of_pages, isbn, description, coverImageURL, readLink } = req.body;
-    const user = await User.findById(userId);
+    const {bookTitle, genre, category, author, publisher, no_of_pages, isbn, description, coverImageURL, readLink } = req.body;
     try {
         validateBookSchema.parse({ bookTitle, author });
         const last_book_id = (await Book.find({})).length
@@ -22,13 +22,19 @@ async function createBook(req, res, next) {
             isbn: isbn ? isbn : "NA",
             description: description,
             coverImageURL: coverImageURL ? coverImageURL : "/asset/default/book_cover.png",
-            readLink: readLink ? readLink : 'null',
-            postedby: userId
+            readURl: readLink ? readLink : 'null',
+            postedby: req.user._id
         })
+        
+        // const updatedUser = await User.findByIdAndUpdate(req.user._id,{
+        //     $push:{books:book._id}
+        // })
+        const updatedUser = await updateBook(req.user._id, book._id);
+
         const allGenres = await get_genre();
-        await updategenre(genre);
+        //await updategenre(genre);
         return res.status(201).render("home",{
-            user: user,
+            user: updatedUser,
             success:true,
             message: "Book Added Succesfully!",
             allGenres: allGenres,
@@ -37,9 +43,10 @@ async function createBook(req, res, next) {
     } catch (error) {
         console.log(error);
         return res.status(500).render("addbook", {
-            user : user,
+            allGenres: await get_genre(),
+            user : req.user,
             success:false,
-            Error: error.issues[0].message
+            Error: error
         })
     }
 }

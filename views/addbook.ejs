@@ -24,17 +24,13 @@
     <% } %>
       <%- include("./partials/navbar") %>
         <div class="maqsad">
-          <% if (locals.user) { %>
-            <h2>
-              <%= locals.user._id %>
-            </h2>
+          
 
-            <% } %>
+  
               <h1 style="font-family: 'Courier New', Courier, monospace;">Add a book 📔</h1>
 
               <form class="mt-4" action="/book/addbook" method="post">
                 <fieldset>
-                  <input type="hidden" name="userId" value="<%= locals.user._id %>">
                   <div>
                     <legend>Book Title</legend>
                     <input required name="bookTitle" type="text" class="form-control" id="bookTitle"

@@ -26,7 +26,7 @@
                 <p style="word-spacing: 10px; font-size: 20px;"><span><b>No.of Pages : </b><%= book.no_of_pages %></span></p>
                 <p style="word-spacing: 10px; font-size: 20px;"><span><b>ISBN code : </b><%= book.isbn %></span></p>
                 <p style="word-spacing: 10px; font-size: 20px;"><b>Description : </b><p><%= book.description %></p></p>
-                <p style="word-spacing: 10px; font-size: 20px;"><b>Buy here : </b><p><%= book.readURl %></p></p>
+                <a href="<%= book.readURl %>" style="word-spacing: 10px; font-size: 20px;">Click here to buy</a>
             </div>
         </div>
 

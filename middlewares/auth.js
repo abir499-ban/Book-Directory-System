@@ -1,5 +1,6 @@
 const { validateTOKEN } = require("../utils/service/auth");
-const {User}  =require('../models/user')
+const {User}  =require('../models/user');
+const { get_genre } = require("../constants/get_genre");
 
 async function restrictAccessto_LogIn_and_SignUp(req,res,next){
     //console.log("inside middleware");
@@ -36,12 +37,14 @@ async function restrictuser(req,res,next){
 async function restrictAccesstoAddBook(req,res,next){
     const token = req.cookies.token;
     if(!token) return res.status(400).render("home",{
+        allGenres: await get_genre(),
         success:false,
         Error:"Sign in first to add a book"
     })
     try {
         const payload = await validateTOKEN(token);
         if(!payload) return res.status(400).render("home",{
+            allGenres: await get_genre(),
             success:false,
             Error:"error in accessing the route"
         })
