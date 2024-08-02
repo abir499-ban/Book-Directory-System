@@ -1,13 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <%- include("./partials/style") %>
+        <style>
+            div.maqsad {
+                padding: 50px;
+                margin-left: 40px;
+                margin-right: 40px;
+            }
+
+            div#display:hover {
+                cursor: pointer;
+            }
+        </style>
+        <title>Profile</title>
 </head>
+
 <body>
-    <div>
-        <img src="<%= locals.user.profilePic %>" >
-    </div>
+    <%- include("./partials/navbar") %>
+        <div class="maqsad" style="display:flex; flex-wrap:wrap; flex-direction: row; gap:100px">
+            <img src="<%= locals.user.profilePic %>" style="height: 300px; width: 300px; border-radius: 20px; ">
+            <div>
+                <h2>
+                    <%= locals.user.name %>
+                </h2>
+                <div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#blogs" aria-selected="true"
+                                role="tab">Blogs</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab"
+                                tabindex="-1">Profile</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                                aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu" style="">
+                                <h6 class="dropdown-header">Dropdown header</h6>
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Separated link</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade active show" id="blogs" role="tabpanel">
+                            <% if (locals.blogs) { %>
+                                <% (locals.blogs).forEach(blog=> { %>
+                                    <h1>
+                                        <%= blog.title %>
+                                    </h1>
+                                    <% }) %>
+                                        <% } %>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel">
+                            <p style="word-spacing: 10px;">Email: <%= locals.user.email %>
+                            </p>
+                            <p style="word-spacing: 10px;">Gender: <% if (locals.user.gender==="Male" ) { %>
+                                    <i class="fas fa-male" style="color: #f3f4f7;"></i>
+
+                                    <% } %>
+                                        <% if (locals.user.gender==="Female" ) { %>
+                                            <i class="fas fa-female" style="color: #f4f5f5;"></i>
+                                            <% } %>
+                            </p>
+                            <p style="word-spacing: 10px;">Date of Birth: <%= (locals.user.birthdayDate).toDateString()
+                                    %>
+                            </p>
+                        </div>
+                        <div class="tab-pane fade" id="dropdown1">
+
+                        </div>
+                        <div class="tab-pane fade" id="dropdown2">
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <%- include("./partials/script") %>
 </body>
+
 </html>

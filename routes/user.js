@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const { handleSignUp, handleusersignin } = require('../controller/user');
+const { handleSignUp, handleusersignin, getUserProfile } = require('../controller/user');
 const { restrictAccessto_LogIn_and_SignUp, accesstoProfile } = require('../middlewares/auth');
 const multer = require('multer');
 const path = require('path');
@@ -31,22 +31,6 @@ router.get('/signin', restrictAccessto_LogIn_and_SignUp , (req,res)=>{
 
 router.post('/signin', handleusersignin);
 
-router.get('/:id', accesstoProfile,async(req,res)=>{
-    const id = req.params.id;
-    try {
-        const user = await User.findById(id);
-        return res.render("profile",{
-            user:user
-        })
-    } catch (error) {
-        console.log(error);
-        return res.render("home",{
-            user:req.user,
-            allGenres:await get_genre(),
-            success:false,
-            Error:'Server error occured'
-        })
-    }
-} )
+router.get('/:id', accesstoProfile, getUserProfile);
 
 module.exports = router

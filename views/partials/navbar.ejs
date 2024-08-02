@@ -20,7 +20,8 @@
                     <% } %>
                         <% if (locals.user) { %>
                             <li class="nav-item">
-                                <a class="nav-link" href="/book/addbook" style=" font-weight: bold; color: navy;"><b>Add a Book</b></a>
+                                <a class="nav-link" href="/book/addbook" style=" font-weight: bold; color: navy;"><b>Add
+                                        a Book</b></a>
                             </li>
 
                             <% } %>
@@ -39,11 +40,14 @@
                                 </li>
             </ul>
             <form class="d-flex">
-                <input class="form-control me-sm-2" type="search" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                <% if (locals.user) { %>
-                    <a class="nav-link" href="/user/<%= locals.user._id %>">Profile</a>
-
+                <span style="display: inline-flex; padding-left: 16px;">
+                    <input class="form-control me-sm-2" type="search" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </span>
+                <% if (locals.user && !locals.alreadyOnprofile) { %>
+                    <a class="nav-link" href="/user/<%= locals.user._id %>" target="_blank"><img
+                            style="height: 35px; width: 35px; border-radius: 20px; margin-left: 2px"
+                            src="<%= locals.user.profilePic %>"></a>
                     <% } %>
             </form>
         </div>

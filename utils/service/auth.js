@@ -7,6 +7,7 @@ async function createToken(user){
         _id:user._id,
         name:user.name,
         email:user.email,
+        profilePic:user.profilePic,
     }
     
     const token =  jwt.sign(payload,secret_key,{
