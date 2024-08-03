@@ -14,7 +14,7 @@
                 cursor: pointer;
             }
         </style>
-        <title>HOME</title>
+        <title>The Nerd</title>
 </head>
 
 <body>
@@ -37,56 +37,36 @@
                 <% } %>
                     <%- include("./partials/navbar") %>
                         <div class="maqsad">
-                            <h1>Home</h1>
-                            <% if (locals.user) { %>
-                                <h2>
-                                    <%= locals.user.name %>
-                                </h2>
-                                <% } %>
+                            <div id="quote">
+                                <h1 style="font-size:3em;">“Books are mirrors:<br> 
+                                    you only see in them<br>
+                                     what you already have inside you.”<br>
+                                      – <i style="font-size: 20px;">Carlos Ruiz Zafon</i>
 
+                                </h1>
+                            </div>
 
-                                    <div style="display: flex; flex-wrap: wrap; flex-direction: row; gap:10px">
-                                        <% if (locals.allGenres) { %>
-                                            <% (locals.allGenres).forEach(genre=> { %>
-                                                <div id="display" onclick="gettBooks('<%= genre.title %>')"
-                                                    class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-                                                    <div class="card-body"
-                                                        style="background-image: url('<%= genre.coverPic %>'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-                                                        <h4 class="card-title">
-                                                            <%= genre.title %>
-                                                        </h4>
-                                                        <p class="card-text">
-                                                            <%= genre.info %>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <% }) %>
-
-                                                    <% } %>
-                                    </div>
-                                    <div id="carouselExample" class="carousel slide">
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <img src="..." class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="..." class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="..." class="d-block w-100" alt="...">
+                            <h1 style="text-decoration: underline; margin-top: 88px">Top Genres</h1>
+                            <div style="display: flex; flex-wrap: wrap; flex-direction: row; gap:10px; ;">
+                                <% if (locals.allGenres) { %>
+                                    <% (locals.allGenres).forEach(genre=> { %>
+                                        <div id="display" onclick="gettBooks('<%= genre.title %>')"
+                                            class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+                                            <div class="card-body"
+                                                style="background-image: url('<%= genre.coverPic %>'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                                                <h4 class="card-title">
+                                                    <%= genre.title %>
+                                                </h4>
+                                                <p class="card-text">
+                                                    <%= genre.info %>
+                                                </p>
                                             </div>
                                         </div>
-                                        <button class="carousel-control-prev" type="button"
-                                            data-bs-target="#carouselExample" data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Previous</span>
-                                        </button>
-                                        <button class="carousel-control-next" type="button"
-                                            data-bs-target="#carouselExample" data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Next</span>
-                                        </button>
-                                    </div>
+                                        <% }) %>
+
+                                            <% } %>
+                            </div>
+
                         </div>
                         <%- include("./partials/script") %>
                             <script>
