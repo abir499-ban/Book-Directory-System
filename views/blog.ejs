@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./partials/style") %>
+        <style>
+            div.maqsad {
+                padding: 50px;
+                margin-left: 40px;
+                margin-right: 40px;
+                margin: 0;
+                height: 100vh;
+
+                display: flex;
+                flex-direction: column;
+                /* Arrange elements in a column */
+                justify-content: flex-start;
+                /* Aligns content at the top */
+                align-items: center;
+            }
+        </style>
+        <title>Blog</title>
+</head>
+
+<body>
+    <%- include("./partials/navbar") %>
+        <div class="maqsad">
+            <img src="<%= blog.coverPic %>" style="height: 300px; width: 500px;">
+            <h2 class="mt-4"><%= blog.BlogTitle%></h2>
+            <p>By <%= blog.postedBy.name %></p>
+            <p style="margin-top: 34px;"><%= blog.body %></p>
+        </div>
+
+
+
+
+        <%- include("./partials/script") %>
+</body>
+
+</html>

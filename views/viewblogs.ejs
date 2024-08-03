@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./partials/style") %>
+        <style>
+            div.maqsad {
+                padding: 50px;
+                margin-left: 40px;
+                margin-right: 40px;
+            }
+        </style>
+        <title>Get Blogs</title>
+</head>
+
+<body>
+    <%- include("./partials/navbar") %>
+        <div class="maqsad">
+            <h1>Read a Blog</h1>
+            <% (locals.allBlogs).forEach(blog=> { %>
+                <div class="card" style="width: 18rem;" id="<%= blog._id %>">
+                    <img src="<%= blog.coverPic %>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= blog.BlogTitle %></h5>
+                        <p>By: <%= blog.postedBy.name %></p>
+                        <a href="/blog/<%= blog._id %>" class="btn btn-primary">Read</a>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+
+
+
+
+
+
+
+        <%- include("./partials/script") %>
+</body>
+
+</html>
