@@ -18,16 +18,18 @@
         <div class="maqsad">
             <h1>Read a Blog</h1>
             <p><button type="button" class="btn btn-primary btn-lg"><a href="/blog/addblog" style="color: white; text-decoration: none;"><i class="fa-solid fa-pencil" style="color: #f0f2f5;"></i>   Write a Blog</a></button></p>
-            <% (locals.allBlogs).forEach(blog=> { %>
-                <div class="card" style="width: 18rem;" id="<%= blog._id %>">
-                    <img src="<%= blog.coverPic %>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= blog.BlogTitle %></h5>
-                        <p>By: <%= blog.postedBy.name %></p>
-                        <a href="/blog/<%= blog._id %>" class="btn btn-primary">Read</a>
+            <div style="display: flex; flex-wrap: wrap; flex-direction: row; gap: 30px;">
+                <% (locals.allBlogs).forEach(blog=> { %>
+                    <div class="card" style="width: 18rem;" id="<%= blog._id %>">
+                        <img src="<%= blog.coverPic %>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= blog.BlogTitle %></h5>
+                            <p>By: <%= blog.postedBy.name %></p>
+                            <a href="/blog/<%= blog._id %>" class="btn btn-primary">Read</a>
+                        </div>
                     </div>
-                </div>
-                <% }) %>
+                    <% }) %>
+            </div>
         </div>
 
 

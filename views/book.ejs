@@ -8,6 +8,7 @@
                 margin-left: 40px;
                 margin-right: 40px;
             }
+            
         </style>
     <title>Book</title>
 </head>
@@ -17,15 +18,15 @@
         <a href="/book/getbooks/<%= genre %>"><%= genre %></a>  >  <a href="/book/getbooks/<%= genre %>/<%= book.id %>"><%= book.bookTitle %></a>
         <div style="display: flex; flex-wrap: wrap; flex-direction: row; gap:5rem" class="mt-4">
             <img src="<%= book.coverImageURL %>" style="width:20rem; height: 30rem;">
-            <div>
-                <h1 style="font-family:Georgia, 'Times New Roman', Times, serif; margin-bottom: 4rem;"><%= book.bookTitle %></h1>
-                <p style="word-spacing: 10px; font-size: 20px;"><span><b>Genre : </b><%= genre %></span></p>
-                <p style="word-spacing: 10px; font-size: 20px;"><span><b>Category : </b><%= book.category %></span></p>
+            <div class="wrapper">
+                <h1  style="font-family:Georgia, 'Times New Roman', Times, serif; margin-bottom: 4rem;"><%= book.bookTitle %></h1>
+                <p  style="word-spacing: 10px; font-size: 20px;"><span><b>Genre : </b><%= genre %></span></p>
+                <p  style="word-spacing: 10px; font-size: 20px;"><span><b>Category : </b><%= book.category %></span></p>
                 <p style="word-spacing: 10px; font-size: 20px;"><span><b>Author : </b><%= book.author %></span></p>
                 <p style="word-spacing: 10px; font-size: 20px;"><span><b>Publisher : </b><%= book.publisher %></span></p>
                 <p style="word-spacing: 10px; font-size: 20px;"><span><b>No.of Pages : </b><%= book.no_of_pages %></span></p>
                 <p style="word-spacing: 10px; font-size: 20px;"><span><b>ISBN code : </b><%= book.isbn %></span></p>
-                <p style="word-spacing: 10px; font-size: 20px;"><b>Description : </b><p><%= book.description %></p></p>
+                <p style="word-spacing: 10px; font-size: 20px;"><b>Description : </b><p style="word-break: break-all;"><%= book.description %></p></p>
                 <a href="<%= book.readURl %>" style="word-spacing: 10px; font-size: 20px;">Click here to buy</a>
             </div>
         </div>
