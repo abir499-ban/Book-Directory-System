@@ -27,6 +27,18 @@ Introducing 'THE NERD 🥸' an online web application to store all your favourit
 6. [Zod](https://zod.dev/)
 
 
+## Clone the repo
+
+To get a copy of the code and start working on this project locally, you'll need to clone the repository. Follow these steps:
+
+1. **Open a terminal or command prompt** on your computer.
+
+2. **Navigate to the directory** where you want to clone the project. You can do this by using the `cd` command. For example:
+
+   ```bash
+   cd /path/to/your/directory
+
+
 
 
 
