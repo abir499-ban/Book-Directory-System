@@ -29,9 +29,13 @@ Introducing 'THE NERD 🥸' an online web application to store all your favourit
 
 ### Tools and Package Manager
 1.[Mongoose](https://mongoosejs.com/)
+
 2.[JWT](https://jwt.io/)
+
 3.[postman](https://www.postman.com/)
+
 4.[npm](https://www.npmjs.com/)
+
 
 
 ## Clone the repo
