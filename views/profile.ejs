@@ -56,7 +56,14 @@
                         <div class="tab-pane fade active show" id="blogs" role="tabpanel">
                             <% if (locals.user.blogs) { %>
                                 <% (locals.user.blogs).forEach(blog=> { %>
-                                    <p><%= blog.BlogTitle %></p>
+                                    <div style="display: flex; flex-wrap: wrap; flex-direction: row; gap: 20px;">
+                                        <a href="/blog/<%= blog._id%>">
+                                            <%= blog.BlogTitle %>
+                                        </a>
+                                        <p style="color: grey;">Created on <%= blog.createdAt.toDateString() %>
+                                        </p>
+                                    </div>
+                                    <hr>
                                     <% }) %>
                                         <% } %>
                         </div>

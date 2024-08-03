@@ -9,7 +9,8 @@
                 margin-left: 40px;
                 margin-right: 40px;
             }
-            div#display:hover{
+
+            div#display:hover {
                 cursor: pointer;
             }
         </style>
@@ -47,23 +48,52 @@
                                     <div style="display: flex; flex-wrap: wrap; flex-direction: row; gap:10px">
                                         <% if (locals.allGenres) { %>
                                             <% (locals.allGenres).forEach(genre=> { %>
-                                                <div id="display" onclick="gettBooks('<%= genre.title %>')" class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-                                                    <div class="card-body" style="background-image: url('<%= genre.coverPic %>'); background-size: cover; background-position: center; background-repeat: no-repeat;" >
-                                                        <h4 class="card-title"><%= genre.title %></h4>
-                                                        <p class="card-text"><%= genre.info %></p>
+                                                <div id="display" onclick="gettBooks('<%= genre.title %>')"
+                                                    class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+                                                    <div class="card-body"
+                                                        style="background-image: url('<%= genre.coverPic %>'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                                                        <h4 class="card-title">
+                                                            <%= genre.title %>
+                                                        </h4>
+                                                        <p class="card-text">
+                                                            <%= genre.info %>
+                                                        </p>
                                                     </div>
                                                 </div>
                                                 <% }) %>
 
                                                     <% } %>
                                     </div>
+                                    <div id="carouselExample" class="carousel slide">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="..." class="d-block w-100" alt="...">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="..." class="d-block w-100" alt="...">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="..." class="d-block w-100" alt="...">
+                                            </div>
+                                        </div>
+                                        <button class="carousel-control-prev" type="button"
+                                            data-bs-target="#carouselExample" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button"
+                                            data-bs-target="#carouselExample" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
                         </div>
                         <%- include("./partials/script") %>
-                        <script>
-                            function gettBooks(genre){
-                                window.location.href = `http://localhost:8000/book/getbooks/${genre}`     
-                            }
-                        </script>
+                            <script>
+                                function gettBooks(genre) {
+                                    window.location.href = `http://localhost:8000/book/getbooks/${genre}`
+                                }
+                            </script>
 </body>
 
 </html>
