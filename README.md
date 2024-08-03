@@ -37,7 +37,21 @@ To get a copy of the code and start working on this project locally, you'll need
 
    ```bash
    cd /path/to/your/directory
+   
+3. Clone the repo by running this command.
+   ```bash
+   git clone https://github.com/abir499-ban/Book-Directory-System.git
+   
+4. Navigate to the folder where you have cloned the project.
+   ```bash
+   cd book-directory
 
+5. Create your own branch.
+   ```bash
+   git checkout branch-name
+
+
+   
 
 
 
