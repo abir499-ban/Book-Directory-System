@@ -17,6 +17,7 @@
     <%- include("./partials/navbar") %>
         <div class="maqsad">
             <h1>Read a Blog</h1>
+            <p><button type="button" class="btn btn-primary btn-lg"><a href="/blog/addblog" style="color: white; text-decoration: none;"><i class="fa-solid fa-pencil" style="color: #f0f2f5;"></i>   Write a Blog</a></button></p>
             <% (locals.allBlogs).forEach(blog=> { %>
                 <div class="card" style="width: 18rem;" id="<%= blog._id %>">
                     <img src="<%= blog.coverPic %>" class="card-img-top" alt="...">
