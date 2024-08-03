@@ -7,10 +7,15 @@ Introducing 'THE NERD 🥸' an online web application to store all your favourit
 ## FEATURES
 
 **Add and View Books** : Add your favourite books by mentioning details about it and let other users view it.
+
 **Pick a genre** : Choose from a variety of genre of books.
+
 **Personalized experience** : Log in/Sign up to get a personalized experience.
+
 **Dedicated Profile-Section** : Specially designed profile(me) section to keep a track of your own contributions to the community like books added or blogs posted,
+
 **Blogging Feature** : Write and share blogs about your own reading experience of reading books.
+
 
 ## TECH STACK
 
