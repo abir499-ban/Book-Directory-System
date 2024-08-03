@@ -28,13 +28,13 @@ Introducing 'THE NERD 🥸' an online web application to store all your favourit
 6. [Zod](https://zod.dev/)
 
 ### Tools and Package Manager
-1.[Mongoose](https://mongoosejs.com/)
+1. [Mongoose](https://mongoosejs.com/)
 
-2.[JWT](https://jwt.io/)
+2. [JWT](https://jwt.io/)
 
-3.[postman](https://www.postman.com/)
+3. [postman](https://www.postman.com/)
 
-4.[npm](https://www.npmjs.com/)
+4. [npm](https://www.npmjs.com/)
 
 
 
@@ -61,9 +61,6 @@ To get a copy of the code and start working on this project locally, you'll need
    ```bash
    git checkout branch-name
 
-
-   
-
-
-
-
+6. Start the application.
+   ```bash
+      npm start  
