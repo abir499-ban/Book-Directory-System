@@ -19,12 +19,19 @@ Introducing 'THE NERD 🥸' an online web application to store all your favourit
 
 ## TECH STACK
 
+### Technologies
 1. [Node.js](https://nodejs.org/en)
 2. [Express.js](https://expressjs.com/)
 3. [MongoDB](https://www.mongodb.com/)
 4. [EJS](https://ejs.co/)
 5. [Bootstrap](https://getbootstrap.com/)
 6. [Zod](https://zod.dev/)
+
+### Tools and Package Manager
+1.[Mongoose](https://mongoosejs.com/)
+2.[JWT](https://jwt.io/)
+3.[postman](https://www.postman.com/)
+4.[npm](https://www.npmjs.com/)
 
 
 ## Clone the repo
